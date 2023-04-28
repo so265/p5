@@ -24,7 +24,7 @@ const leftArrow = document.getElementById("left_arrow") //Je vais chercher mes i
 const rightArrow = document.getElementById("right_arrow") //Fléche droite
 
 leftArrow.addEventListener("click", () => { console.log("event listener, fléche gauche"); }) //Je mets un addEventListener au click et je verifie si cela foctionne aà l'aide console.log
-rightArrow.addEventListener("click", () => { alert("event listener, fléche droite"); }) //Je mets un addEventListener au click et je verifie si cela foctionne avec une alert
+rightArrow.addEventListener("click", () => { console.log("event listener, fléche droite"); }) //Je mets un addEventListener au click et je verifie si cela foctionne avec une alert
 
 
 //J'ajoute les points pour les 4 images du slider
@@ -39,6 +39,8 @@ function bulletPoints() {     //Une fonction déclarée directement avec le mot 
 }
 
 bulletPoints()
+
+
 
 // Je crée un bullet point pour chaque élément de mon tableau d'images
 slides.forEach(bulletPoints);
