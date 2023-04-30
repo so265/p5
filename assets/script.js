@@ -53,5 +53,59 @@ function createBulletPoints() {
 
 createBulletPoints() //j'appelle ma fonction car je veux qu'elle s'execute
 
+//Je veux faire apparaitre mes images
+const totalImg = slides.length //=longueur, toutes les images de mon tableau
 
+// Variable pour suivre l'index des slide du carrousel
+let i = 0 // l'indice de base d'un tableau c'est 0
+
+function displayImagesText() { //function pour les images et les textes
+	changeImg.src = `./assets/images/slideshow/${slides[i].image}`; // src= je spécifie le lien de l'image à afficher/$concaténer = ajouter/ backticks permettent de concaténer plus facilement des chaînes de caractères et des variables
+	textImages.innerHTML = slides[i].tagLine;
+}
+
+
+//Au clic sur la fléche droite, je change le bullet point actif au suivant, je change l’image, je change le texte correspondant à l’image
+
+
+//Au clic sur la fléche droite, je change l’image
+
+function moveToNextImg() {
+	if (i === totalImg - 1) {
+		i = 0
+	}
+	else {
+		(i++)
+
+	}
+
+	displayImagesText()   //J'appelle ma fonction pour l'éxécuter images+textes
+	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
+}
+
+//Au clic sur la fléche gauche, je change l’image
+
+function moveToPreviousImg() {
+	if (i === 0) {
+		i = totalImg - 1;
+	}
+	else {
+		(i--)
+
+	}
+
+	displayImagesText()   //J'appelle ma fonction pour l'éxécuter images+textes
+	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
+
+}
+
+//je change le bullet point actif au suivant, en fonction de l'image en cours dans le slide
+
+function activeBullet() {
+	const dot = document.getElementsByClassName("dot");
+	for (let i = 0; i < dot.length; i++) {
+		dot[i].classList.remove("dot_selected");
+	}
+	dot[i].classList.add("dot_selected");
+}
 
