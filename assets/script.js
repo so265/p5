@@ -28,11 +28,9 @@ const textImages = document.querySelector(".textImages")//Je récupére mon p de
 //leftArrow.addEventListener("click", () => { console.log("event listener, fléche gauche"); }) //Je mets un addEventListener au click et je verifie si cela foctionne aà l'aide console.log
 //rightArrow.addEventListener("click", () => { console.log("event listener, fléche droite"); }) //Je mets un addEventListener au click et je verifie si cela foctionne avec une alert
 
-leftArrow.addEventListener("click", () => { moveToPrevSlide(); })
+leftArrow.addEventListener("click", () => { moveToPreviousImg(); })
 
-rightArrow.addEventListener("click", () => {
-	moveToNextSlide();
-});
+rightArrow.addEventListener("click", () => { moveToNextImg(); });
 
 
 //J'ajoute le point pour l' image du slider
@@ -40,6 +38,7 @@ function createBulletPoint() {     //Une fonction déclarée directement avec le
 	const point = document.createElement("div");  //je cree la div dans laquelle seront les points, cette div sera dans la div class="dots dans index.html"
 	point.classList.add("dot"); // classList.add me permet d'aller chercher la class dot dans style.css qui correspond à mes points, dc j'ajoute un point à ma div crée au dessus
 	const dots = document.querySelector(".dots"); //Je vais chercher ds index.html ma div qui s'appelle dots dans laquelle sera mon points et ma nouvelle div crée en ligne 37 (attention au point car c'est une class)
+
 	dots.appendChild(point); // A dots je lui ajoute(1) point. dots est le parent de point (qui est son enfant). La propriété appenChild() va ajouter un élément parmis les enfant d’un élément parents spécifié (l’élément ajouté par appenChild se positionnera à la fin des enfants de l’élément parent).
 }
 
@@ -49,7 +48,7 @@ function createBulletPoints() {
 	const dotSelected = document.querySelector(".dots :first-child");  //Je selectionne .dots ds mon fichier style.css qui correspond à un point classique, je selectionne le 1er enfant
 	dotSelected.classList.add("dot_selected");  //Je mets le point different sur le premier point, je vais recuperer de point different et l'ajouter à .dots qui correspons à mon premier point
 	//console.log(createBulletPoints);
-}
+}  // dotSlected est mon point actif
 
 createBulletPoints() //j'appelle ma fonction car je veux qu'elle s'execute
 
@@ -91,8 +90,7 @@ function moveToPreviousImg() {
 	}
 	else {
 		(i--)
-
-	}
+}
 
 	displayImagesText()   //J'appelle ma fonction pour l'éxécuter images+textes
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
@@ -108,4 +106,3 @@ function activeBullet() {
 	}
 	dot[i].classList.add("dot_selected");
 }
-
