@@ -105,9 +105,7 @@ function activeBullet() {  //Change dynamiquement la position du point en foncti
 	for (let counter = 0; counter < dot.length; counter++) {  //for ([initialisation]; [condition]; [expression-finale]) et instruction ligne 110
 		
 		dot[counter].classList.remove("dot_selected");        //instruction qui est exécutée tant que la condition de la boucle est vérifiée, remote pour suprimer des classes
-		console.log(counter);
+		//console.log(counter);
 	}
 	dot[counter].classList.add("dot_selected"); //add pour ajouter de classes
-	
-	
 }
