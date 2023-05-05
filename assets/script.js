@@ -64,14 +64,11 @@ function displaySlide() { //function pour faire apparaître les slides comprenan
 function previousSlide() {
 	if (counter === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça 
 		counter = AllSlides ;
-		console.log('counter:' + counter);
+		//console.log('counter:' + counter);
 	} 
+	counter--  //décrémentation
 
-	//else {   ////sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
-		counter--  //décrémentation
-	//};
-	
-    displaySlide()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
+	displaySlide()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter);
@@ -84,9 +81,9 @@ function nextSlide() {
 	if (counter === AllSlides) { //la je verifie une condition
 		counter = -1 
 	}
-    //else { //sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
-		counter++  //je repasse a ++ car je me trouve dans le else lorsque je clique sur la fléche de droite, incrémentation
-	//};
+   
+		counter++  // ++ incrémentation
+	
 
 	displaySlide()   //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
