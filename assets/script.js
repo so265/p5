@@ -51,7 +51,7 @@ function createBulletPoints() {
 createBulletPoints() //j'appelle ma fonction car je veux qu'elle s'execute, à présent apparition de mes 4 points et du point different sur le 1er point
 
 
-function displaySlides() { //function pour faire apparaître les slides comprenant les images et les textes
+function displaySlide() { //function pour faire apparaître les slides comprenant les images et les textes
 	changeImg.src = `./assets/images/slideshow/${slides[counter].image}`;  // src= je spécifie le lien de l'image à afficher/$concaténer = ajouter/ Je récupére les images et j'ajoute les images
 	textImages.innerHTML = slides[counter].tagLine; //J'ajoute le texte pour chaques images en partant du counter 0, tagLine correspond aux paragraphes, dc au texte.Je récupére le texte et j'ajoute le texte. innerHTML permet de récupérer le texte ainsi que son balisage HTML
 } //Ma fonction est juste définie, je l'appelle plus bas
@@ -61,52 +61,53 @@ function displaySlides() { //function pour faire apparaître les slides comprena
 
 
 //Au clic sur la fléche gauche, je change la diapositive
-function previousSlides() {
+function previousSlide() {
 	if (counter === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça 
-		counter = AllSlides - 1;
-		
+		counter = AllSlides ;
+		console.log('counter:' + counter);
 	} 
 
-	else {   ////sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
+	//else {   ////sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
 		counter--  //décrémentation
-	};
+	//};
 	
-
-	displaySlides()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
+    displaySlide()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter);
 }
 
-leftArrow.addEventListener("click", previousSlides)    //Autre façon de l'écrire, leftArrow.addEventListener("click", () => { previousSlides(); })
+leftArrow.addEventListener("click", previousSlide)    //Autre façon de l'écrire, leftArrow.addEventListener("click", () => { previousSlides(); })
 
 //Au clic sur la fléche droite, je change l’image
-function nextSlides() {
-	if (counter === AllSlides - 1) { //la je verifie une condition
-		counter = 0  
+function nextSlide() {
+	if (counter === AllSlides) { //la je verifie une condition
+		counter = -1 
 	}
-    else { //sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
+    //else { //sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
 		counter++  //je repasse a ++ car je me trouve dans le else lorsque je clique sur la fléche de droite, incrémentation
-	};
+	//};
 
-	displaySlides()   //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
+	displaySlide()   //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter); //je regarde mon counter au clik sur la fleche droite dans ma console
 }
 
-rightArrow.addEventListener("click", nextSlides);  //Autre façon de l'écrire, rightArrow.addEventListener("click", () => { nextSlides(); });
+rightArrow.addEventListener("click", nextSlide);  //Autre façon de l'écrire, rightArrow.addEventListener("click", () => { nextSlides(); });
 
 
 //je change le bullet point actif au suivant, en fonction de l'image en cours dans le slide
 
 function activeBullet() {  //Change dynamiquement la position du point en fonction de l'image en cours d'itération dans le slide
-	const dot = document.getElementsByClassName("dot"); //ds style.css, ce sont mes points, il y en a 4, que j'ai placé à l'intérieur d 'une div crée en ligne 36
+	const dots = document.getElementsByClassName("dot"); //ds style.css, ce sont mes points, il y en a 4, que j'ai placé à l'intérieur d 'une div crée en ligne 36
 	//console.log(dot);
-	for (let counter = 0; counter < dot.length; counter++) {  //for ([initialisation]; [condition]; [expression-finale]) et instruction ligne 110
+	for (let i = 0; i < dots.length; i++) {  //for ([initialisation]; [condition]; [expression-finale]) et instruction ligne 110
 		
-		dot[counter].classList.remove("dot_selected");        //instruction qui est exécutée tant que la condition de la boucle est vérifiée, remote pour suprimer des classes
+		dots[i].classList.remove("dot_selected");        //instruction qui est exécutée tant que la condition de la boucle est vérifiée, remote pour suprimer des classes
 		//console.log(counter);
 	}
-	dot[counter].classList.add("dot_selected"); //add pour ajouter des classes
+	dots[i].classList.add("dot_selected"); //add pour ajouter des classes
 }
+
+ activeBullet();
