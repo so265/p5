@@ -25,7 +25,7 @@ const rightArrow = document.getElementById("right_arrow") //Fléche droite
 const changeImg = document.querySelector(".banner-img") // Je vais chercher ma banner d'images ds index.html
 const textImages = document.querySelector(".textImages")//Je récupére mon p de ma banner pour le modifier ds index.html
 const AllSlides = slides.length //lenght=longueur, toutes les diapositives de mon tableau(images et textes de mon tableau), je ferai apparaitre mes 4 diapositives, lenght permet de compter les elements du tableau
-let counter = 0 // Variable pour suivre l'index des slide du carrousel, l'indice de base d'un tableau c'est 0, c'est mon compteur qui part de 0 et qui va me permettre d'itérerds mon tableau d'images(repetition de la boucle)
+let i = 0 // Variable pour suivre l'index des slide du carrousel, l'indice de base d'un tableau c'est 0, c'est mon compteur qui part de 0 et qui va me permettre d'itérerds mon tableau d'images(repetition de la boucle)
 
 //leftArrow.addEventListener("click", () => { console.log("event listener, fléche gauche"); }) //Je mets un addEventListener au click et je verifie si cela foctionne aà l'aide console.log
 //rightArrow.addEventListener("click", () => { console.log("event listener, fléche droite"); }) //Je mets un addEventListener au click et je verifie si cela foctionne avec une alert
@@ -52,8 +52,8 @@ createBulletPoints() //j'appelle ma fonction car je veux qu'elle s'execute, à p
 
 
 function displaySlide() { //function pour faire apparaître les slides comprenant les images et les textes
-	changeImg.src = `./assets/images/slideshow/${slides[counter].image}`;  // src= je spécifie le lien de l'image à afficher/$concaténer = ajouter/ Je récupére les images et j'ajoute les images
-	textImages.innerHTML = slides[counter].tagLine; //J'ajoute le texte pour chaques images en partant du counter 0, tagLine correspond aux paragraphes, dc au texte.Je récupére le texte et j'ajoute le texte. innerHTML permet de récupérer le texte ainsi que son balisage HTML
+	changeImg.src = `./assets/images/slideshow/${slides[i].image}`;  // src= je spécifie le lien de l'image à afficher/$concaténer = ajouter/ Je récupére les images et j'ajoute les images
+	textImages.innerHTML = slides[i].tagLine; //J'ajoute le texte pour chaques images en partant du counter 0, tagLine correspond aux paragraphes, dc au texte.Je récupére le texte et j'ajoute le texte. innerHTML permet de récupérer le texte ainsi que son balisage HTML
 } //Ma fonction est juste définie, je l'appelle plus bas
 
 
@@ -62,11 +62,11 @@ function displaySlide() { //function pour faire apparaître les slides comprenan
 
 //Au clic sur la fléche gauche, je change la diapositive
 function previousSlide() {
-	if (counter === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça 
-		counter = AllSlides ;
+	if (i === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça 
+		i = AllSlides ;
 		//console.log('counter:' + counter);
 	} 
-	counter--  //décrémentation
+	i--  //décrémentation
 
 	displaySlide()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
@@ -78,11 +78,11 @@ leftArrow.addEventListener("click", previousSlide)    //Autre façon de l'écrir
 
 //Au clic sur la fléche droite, je change l’image
 function nextSlide() {
-	if (counter === AllSlides) { //la je verifie une condition
-		counter = -1 
+	if (i === AllSlides) { //la je verifie une condition
+		i = -1 
 	}
    
-		counter++  // ++ incrémentation
+		i++  // ++ incrémentation
 	
 
 	displaySlide()   //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
