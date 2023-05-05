@@ -31,7 +31,7 @@ let counter = 0 // Variable pour suivre l'index des slide du carrousel, l'indice
 //rightArrow.addEventListener("click", () => { console.log("event listener, fléche droite"); }) //Je mets un addEventListener au click et je verifie si cela foctionne avec une alert
 
 
-//J'ajoute le point pour l'image du slider
+//J'ajoute un point pour l'image du slider
 function createBulletPoint() {     
 	const point = document.createElement("div");  //je cree la div dans laquelle seront les points, cette div sera dans la div class="dots dans index.html"
 	point.classList.add("dot"); // classList.add me permet d'aller chercher la class dot dans style.css qui correspond à mes points, dc j'ajoute un point à ma div crée au dessus
@@ -39,6 +39,7 @@ function createBulletPoint() {
 	dots.appendChild(point); // A dots je lui ajoute(1) point. dots est le parent de point (qui est son enfant). La propriété appenChild() va ajouter un élément parmis les enfant d’un élément parents spécifié (l’élément ajouté par appenChild se positionnera à la fin des enfants de l’élément parent).
 }
 
+//Je crée tous les points
 function createBulletPoints() {
 	// Je crée un bullet point pour chaques éléments de mon tableau d'images
 	slides.forEach(createBulletPoint); //donc je crée 4 bulletes points, un bullet pour chaque image
@@ -53,7 +54,7 @@ createBulletPoints() //j'appelle ma fonction car je veux qu'elle s'execute, à p
 function displaySlides() { //function pour faire apparaître les slides comprenant les images et les textes
 	changeImg.src = `./assets/images/slideshow/${slides[counter].image}`;  // src= je spécifie le lien de l'image à afficher/$concaténer = ajouter/ Je récupére les images et j'ajoute les images
 	textImages.innerHTML = slides[counter].tagLine; //J'ajoute le texte pour chaques images en partant du counter 0, tagLine correspond aux paragraphes, dc au texte.Je récupére le texte et j'ajoute le texte. innerHTML permet de récupérer le texte ainsi que son balisage HTML
-}
+} //Ma fonction est juste définie, je l'appelle plus bas
 
 
 //Au clic sur la fléche droite, je change le bullet point actif au suivant, je change l’image, je change le texte correspondant à l’image
@@ -71,7 +72,7 @@ function previousSlides() {
 	};
 	
 
-	displaySlides()   //J'appelle ma fonction pour l'éxécuter images+textes
+	displaySlides()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter);
@@ -88,7 +89,7 @@ function nextSlides() {
 		counter++  //je repasse a ++ car je me trouve dans le else lorsque je clique sur la fléche de droite, incrémentation
 	};
 
-	displaySlides()   //J'appelle ma fonction pour l'éxécuter tous les slides = images+textes
+	displaySlides()   //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
 	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter); //je regarde mon counter au clik sur la fleche droite dans ma console
@@ -107,5 +108,5 @@ function activeBullet() {  //Change dynamiquement la position du point en foncti
 		dot[counter].classList.remove("dot_selected");        //instruction qui est exécutée tant que la condition de la boucle est vérifiée, remote pour suprimer des classes
 		//console.log(counter);
 	}
-	dot[counter].classList.add("dot_selected"); //add pour ajouter de classes
+	dot[counter].classList.add("dot_selected"); //add pour ajouter des classes
 }
