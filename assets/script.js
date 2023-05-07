@@ -63,12 +63,16 @@ function displaySlide() { //function pour faire apparaître les slides comprenan
 //Au clic sur la fléche gauche, je change la diapositive
 function previousSlide() {
 	if (i === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça 
-		i = AllSlides ;
-		//console.log('counter:' + counter);
+		i = AllSlides - 1;
+		
 	} 
-	i--  //décrémentation
 
-	displaySlide()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
+	else {   ////sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
+		i--  //décrémentation
+	};
+	
+
+	displaySlide()   //J'appelle ma fonction pour l'éxécuter images+textes
 	activeBullet();  //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter);
@@ -78,20 +82,21 @@ leftArrow.addEventListener("click", previousSlide)    //Autre façon de l'écrir
 
 //Au clic sur la fléche droite, je change l’image
 function nextSlide() {
-	if (i === AllSlides) { //je verifie une condition
-		i = -1 
+	if (i === AllSlides - 1) { //la je verifie une condition
+		i = 0  
 	}
-   
-		i++  // ++ incrémentation
-	
+    else { //sinon si la 1ere condition n'est pas remplie, je passe à la suite else 
+		i++  //je repasse a ++ car je me trouve dans le else lorsque je clique sur la fléche de droite, incrémentation
+	};
 
-	displaySlide();  //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
+	displaySlide()   //J'appelle ma fonction pour l'éxécuter tous les slides = images+textes
 	activeBullet();  //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
-	//console.log(counter); //je regarde mon counter au clik sur la fleche droite dans ma console
+	//console.log(i); //je regarde mon index au clik sur la fleche droite dans ma console
 }
 
 rightArrow.addEventListener("click", nextSlide);  //Autre façon de l'écrire, rightArrow.addEventListener("click", () => { nextSlides(); });
+
 
 
 //je change le bullet point actif au suivant, en fonction de l'image en cours dans le slide
