@@ -69,7 +69,7 @@ function previousSlide() {
 	i--  //décrémentation
 
 	displaySlide()   //J'appelle ma fonction pour l'éxécuter slides (images+textes)
-	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
+	activeBullet();  //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter);
 }
@@ -78,15 +78,15 @@ leftArrow.addEventListener("click", previousSlide)    //Autre façon de l'écrir
 
 //Au clic sur la fléche droite, je change l’image
 function nextSlide() {
-	if (i === AllSlides) { //la je verifie une condition
+	if (i === AllSlides) { //je verifie une condition
 		i = -1 
 	}
    
 		i++  // ++ incrémentation
 	
 
-	displaySlide()   //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
-	activeBullet();       //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
+	displaySlide();  //J'appelle ma fonction pour l'éxécuter tous les slides (images+textes)
+	activeBullet();  //J'appelle la fonction pour l'executer le bullet change de place en foncton de l'image en cours
 
 	//console.log(counter); //je regarde mon counter au clik sur la fleche droite dans ma console
 }
