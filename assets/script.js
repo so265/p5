@@ -23,7 +23,7 @@ const slides = [    //Ceci, correspond à un tableau car il y a les crochets []
 const leftArrow = document.getElementById("left_arrow") //Je vais chercher mes id(mes fléches) dans index.httml, fléche gauche et fléche droite
 const rightArrow = document.getElementById("right_arrow") //Fléche droite
 const changeImg = document.querySelector(".banner-img") // Je vais chercher ma banner d'images ds index.html
-const textImages = document.querySelector(".textImages")//Je récupére mon p de ma banner pour le modifier ds index.html
+const textImages = document.querySelector(".textImages")//Je récupére mon p de ma banner ds index.html pour le modifier 
 const AllSlides = slides.length //lenght=longueur, toutes les diapositives de mon tableau(images et textes de mon tableau), je ferai apparaitre mes 4 diapositives, lenght permet de compter les elements du tableau
 let i = 0 // Variable pour suivre l'index des slide du carrousel, l'indice de base d'un tableau c'est 0, c'est mon compteur qui part de 0 et qui va me permettre d'itérerds mon tableau d'images(repetition de la boucle)
 
@@ -32,7 +32,7 @@ let i = 0 // Variable pour suivre l'index des slide du carrousel, l'indice de ba
 
 
 //J'ajoute un point pour l'image du slider
-function createBulletPoint() {     
+function createBulletPoint() {     //je declare ma fonction puis je lui donne des instructions(qui st le corps de la fonction)
 	const point = document.createElement("div");  //je cree la div dans laquelle seront les points, cette div sera dans la div class="dots dans index.html"
 	point.classList.add("dot"); // classList.add me permet d'aller chercher la class dot dans style.css qui correspond à mes points, dc j'ajoute un point à ma div crée au dessus
 	const dots = document.querySelector(".dots"); //Je vais chercher ds index.html ma div qui s'appelle dots dans laquelle sera mon points et ma nouvelle div crée en ligne 37 (attention au point car c'est une class)
@@ -62,13 +62,13 @@ function displaySlide() { //function pour faire apparaître les slides comprenan
 
 //Au clic sur la fléche gauche, je change la diapositive
 function previousSlide() {
-	if (i === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça 
+	if (i === 0 ) {   //je verifie une condition, si compteur est strictement égal à 0 alors tu fais ça, égalité stricte verifie la valeur et le type "0" et 0, number et string
 		i = AllSlides - 1;
 		
 	} 
 
-	else {   ////sinon si la 1ere condition n'est pas remplie, je passe a la suite else 
-		i--  //décrémentation
+	else {   //sinon si la 1ere condition n'est pas remplie, je passe a la suite else, le code du bloc if n'est pas éxécuté, le code code du bloc else est exécuté
+		i--  //décrémentation, fait une boucle infinie
 	};
 	
 
@@ -83,7 +83,7 @@ leftArrow.addEventListener("click", previousSlide)    //Autre façon de l'écrir
 //Au clic sur la fléche droite, je change l’image
 function nextSlide() {
 	if (i === AllSlides - 1) { //la je verifie une condition
-		i = 0  
+		i = 0  //cette condition n'est pas remplie
 	}
     else { //sinon si la 1ere condition n'est pas remplie, je passe à la suite else 
 		i++  //je repasse a ++ car je me trouve dans le else lorsque je clique sur la fléche de droite, incrémentation
@@ -96,17 +96,17 @@ function nextSlide() {
 }
 
 rightArrow.addEventListener("click", nextSlide);  //Autre façon de l'écrire, rightArrow.addEventListener("click", () => { nextSlides(); });
-
+                                                  //permet d'assigner à un événement 1 fonction
 
 
 //je change le bullet point actif au suivant, en fonction de l'image en cours dans le slide
 
-function activeBullet() {  //Change dynamiquement la position du point en fonction de l'image en cours d'itération dans le slide
+function activeBullet() {  //Change dynamiquement la position du point en fonction de l'image en cours dans le slide
 	const dots = document.getElementsByClassName("dot"); //ds style.css, ce sont mes points, il y en a 4, que j'ai placé à l'intérieur d 'une div crée en ligne 36
 	//console.log(dot);
-	for (let i = 0; i < dots.length; i++) {  //for ([initialisation]; [condition]; [expression-finale]) et instruction ligne 110
-		
-		dots[i].classList.remove("dot_selected");        //instruction qui est exécutée tant que la condition de la boucle est vérifiée, remote pour suprimer des classes
+	for (let i = 0; i < dots.length; i++) {  //for ([initialisation]; [condition]; [expression-finale]) et instruction ligne 109/ i démarre à 0 car pas encore parcouru la boucle 
+		                                     //i < dots.lenght, c'est la condition de poursuite de la boucle / il y a 3 commandes entres (); i++ demande à la boucle for d'ajouter 1 à chaque exécution
+		dots[i].classList.remove("dot_selected");        //instruction qui est exécutée tant que la condition de la boucle est vérifiée, remote pour enlever des classes
 		//console.log(counter);
 	}
 	dots[i].classList.add("dot_selected"); //add pour ajouter des classes
